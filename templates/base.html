@@ -1,0 +1,169 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<title>
+		E-cart | {% block extra_title %}{% endblock %}
+	
+	</title>
+
+	{% block extra_head %}
+
+	{% endblock %}
+	<!-- Meta tag Keywords -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8" />
+	<meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design"
+	/>
+	<!-- //Meta tag Keywords -->
+
+	<!-- Custom-Files -->
+	<link href="{% static 'css/bootstrap.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<!-- Bootstrap css -->
+	<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<!-- Main css -->
+	<link rel="stylesheet" href="{% static 'css/fontawesome-all.css' %}">
+	<!-- Font-Awesome-Icons-CSS -->
+	<link href="{% static 'css/popuo-box.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<!-- pop-up-box -->
+	<link href="{% static 'css/menu.css' %}" rel="stylesheet" type="text/css" media="all" />
+	<!-- menu style -->
+	<!-- //Custom-Files -->
+	<!-- web fonts -->
+	<link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese"
+	    rel="stylesheet">
+	<!-- //web fonts -->
+
+
+	{% block extra_style %}
+	{% endblock %}
+
+
+
+
+</head>
+
+<body>
+
+
+<!-- Top bar -->
+{% include 'partials/_topbar.html' %}
+
+<!-- bottom bar -->
+{% include 'partials/_bottombar.html' %}
+
+<!-- Alert -->
+{% include 'partials/_alerts.html' %}
+
+{% block content %}  {% endblock content %}
+
+
+{% block extra_body %}  {% endblock extra_body %}
+
+
+
+{% include 'partials/_footer.html' %}
+
+
+
+
+	<!-- js-files -->
+	<!-- jquery -->
+	<script src="{% static 'js/jquery-2.2.3.min.js' %}"></script>
+	<!-- //jquery -->
+
+
+	<script>
+		addEventListener("load", function () {
+			setTimeout(hideURLbar, 0);
+		}, false);
+
+		function hideURLbar() {
+			window.scrollTo(0, 1);
+		}
+	</script>
+
+	<!-- nav smooth scroll -->
+	<script>
+		$(document).ready(function () {
+			$(".dropdown").hover(
+				function () {
+					$('.dropdown-menu', this).stop(true, true).slideDown("fast");
+					$(this).toggleClass('open');
+				},
+				function () {
+					$('.dropdown-menu', this).stop(true, true).slideUp("fast");
+					$(this).toggleClass('open');
+				}
+			);
+		});
+	</script>
+	<!-- //nav smooth scroll -->
+
+	<!-- scroll seller -->
+	<script src="{% static 'js/scroll.js' %}"></script>
+	<!-- //scroll seller -->
+
+	<!-- smoothscroll -->
+	<script src="{% static 'js/SmoothScroll.min.js' %}"></script>
+	<!-- //smoothscroll -->
+
+	<!-- start-smooth-scrolling -->
+	<script src="{% static 'js/move-top.js' %}"></script>
+	<script src="{% static 'js/easing.js' %}"></script>
+	<script>
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+
+				$('html,body').animate({
+					scrollTop: $(this.hash).offset().top
+				}, 1000);
+			});
+		});
+	</script>
+	<!-- //end-smooth-scrolling -->
+
+	<!-- smooth-scrolling-of-move-up -->
+	<script>
+		$(document).ready(function () {
+			/*
+			var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+			};
+			*/
+			$().UItoTop({
+				easingType: 'easeOutQuart'
+			});
+
+		});
+	</script>
+	<!-- //smooth-scrolling-of-move-up -->
+
+
+
+
+
+    
+
+
+	<!-- for bootstrap working -->
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+	<!-- //for bootstrap working -->
+	<!-- //js-files -->
+
+
+{% block extra_scripts %}
+
+{% endblock extra_scripts %}
+
+
+</body>
+
+</html>

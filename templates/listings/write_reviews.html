@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% block extra_title %}write reviews{% endblock %}
+
+{% block extra_style %}
+<style type="text/css">
+
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+
+
+
+}
+
+
+	
+.order-item .item-pic img {
+    width: 80px;
+    height: 80px;
+}
+
+.order {
+    margin-top: 12px;
+    padding-bottom: 24px;
+    background-color: #fff;
+}
+
+img {
+    border-style: none;
+    /*vertical-align: middle;*/
+}
+
+.clear {
+    clear: both;
+}
+
+.order-item {
+    min-height: 80px;
+    margin: 24px 12px 24px 36px;
+    padding-right: 12px;
+    width: 916px;
+}
+
+.order-item .item-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.text.title {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.text {
+    color: #212121;
+    word-break: break-word;
+}
+.border{
+	border: 1px;
+}
+
+.button1{
+	background-color: white;
+	text-align: center;
+	color:black;
+	width: 50%;
+}
+
+
+</style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+<div class="mt-4 border lzd-playground-right">
+        <div class="breadcrumb">
+            <a class="first " href="//my.daraz.pk/customer/order/index/">Write Reviews</a>
+        </div>
+
+        <div id="container" class="container">
+        	<div>
+        	<div class="order-list">
+        		
+        		<div class="orders">
+        			<div class="order">
+        				<div class="order-info">
+        					<div class="float-left">
+                                {% if order %}
+                                {% for odr in order %}
+        						<div class="info-order-left-text">Order# 
+        							<a href="#" class="link"> {{ odr.ref_code }}</a>
+        						</div>
+                                
+        						<p class="text info desc">Placed on {{odr.start_date}}</p>
+        					</div>
+        					<div class="pull-cont"></div>
+        					
+                            <a href="{% url 'core:request-refund' %}" class="float-right link manage" style="color: rgb(26, 156, 183);">Refund Request</a>
+        					<div class="clear"></div>
+        				</div>
+        				
+ 						<hr>
+ 						       				
+        				<div class="order-item">
+        					<div class="row">
+        					<div class="col-md-1 item-pic" data-spm="detail_image">
+        						<a href="#">
+        							<img width="50" height="50" src="{{odr.item.item.image.url}}">
+        						</a>
+
+        					</div>
+        					<div style="border-right: 1px solid black;" class="col-md-4 item-main item-main-mini">
+        						
+	        						<div class="text title item-title" data-spm="details_title">&nbsp;{{odr.item.item.title}}</div>
+	        						<p class="text desc"></p>
+	        						<p class="text desc bold"></p>
+	        					
+        					</div>
+        					<div class="col-md-7 mt-3">
+                                <center>
+                                
+                                     <form action="{% url 'core:submit-reviews' %}" method="POST">
+                                        {% csrf_token %}
+
+                                        <input type="hidden" name="ref_code" value="{{ref_code}}">
+
+                                    <label class="float-left" for="comment"><b>Comment here:</b></label>
+                                        <textarea name="comment" class="form-control" rows="4"></textarea>
+
+                                    <label class="float-left" for="comment"><b>Rate here:</b></label>
+                                      <br>
+                                      <div class="rate">
+                                        <input type="radio" id="star5" name="rating" value="5" />
+                                        <label for="star5" title="text">5 stars</label>
+                                        <input type="radio" id="star4" name="rating" value="4" />
+                                        <label for="star4" title="text">4 stars</label>
+                                        <input type="radio" id="star3" name="rating" value="3" />
+                                        <label for="star3" title="text">3 stars</label>
+                                        <input type="radio" id="star2" name="rating" value="2" />
+                                        <label for="star2" title="text">2 stars</label>
+                                        <input type="radio" id="star1" name="rating" value="1" />
+                                        <label for="star1" title="text">1 star</label>
+                                      </div>
+                                    <br><br>
+
+                                    <input type="submit" name="" value="Submit" class="btn btn-info">
+                                    </form>
+
+	        					</center>
+                                
+	        				</div>
+        				<div class="clear"></div>
+        			</div>
+        			</div>
+        		</div>
+
+        		<hr>
+
+        	</div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+{% endblock %}

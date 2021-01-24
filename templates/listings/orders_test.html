@@ -1,0 +1,174 @@
+{% extends 'base.html' %}
+
+{% block extra_style %}
+	
+
+<style type="text/css">
+
+
+	
+.order-item .item-pic img {
+    width: 80px;
+    height: 80px;
+}
+
+.order {
+    margin-top: 12px;
+    padding-bottom: 24px;
+    background-color: #fff;
+}
+
+img {
+    border-style: none;
+    /*vertical-align: middle;*/
+}
+
+.clear {
+    clear: both;
+}
+
+.order-item {
+    min-height: 80px;
+    margin: 24px 12px 24px 36px;
+    padding-right: 12px;
+    width: 916px;
+}
+
+.order-item .item-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.text.title {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.text {
+    color: #212121;
+    word-break: break-word;
+}
+.border{
+	border: 1px;
+}
+</style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+<div class="mt-4 border lzd-playground-right">
+        <div class="breadcrumb">
+            <a class="first " href="//my.daraz.pk/customer/order/index/">My Orders</a>
+        </div>
+
+        <div id="container" class="container">
+        	<div>
+        	<div class="order-list">
+        		
+        		<div class="orders">
+                    {% if object %}
+
+                      
+                    {% for order in object %}
+                    
+        			<div class="order">
+        				<div class="order-info">
+        					<div class="float-left">
+        						<div class="info-order-left-text">Order # 
+        							<a href="#" class="link"> 
+                                        {{order.ref_code}}
+                                </a>
+        						</div>
+        						<p class="text info desc">Placed on {{order.start_date}}</p>
+        					</div>
+        					<div class="pull-cont"></div>
+        					<a href="{% url 'core:write-reviews' order.ref_code %}" class="float-right link manage" style="color: rgb(26, 156, 183);">MANAGE</a>
+        					<div class="clear"></div>
+        				</div>
+        				
+ 						<hr>
+ 					     	       				
+        				<div class="order-item">
+        					<div class="row">
+        					<div class="col-md-1 item-pic" data-spm="detail_image">
+        						<a href="#">
+        							<img src="{{order.item.item.image.url}}">
+        						</a>
+
+        					</div>
+        					<div class="col-md-4 item-main item-main-mini">
+        						
+	        						<div class="text title item-title" data-spm="details_title">&nbsp;{{order.item.item.title}}</div>
+	        						<p class="text desc"></p>
+	        						<p class="text desc bold"></p>
+	        					
+        					</div>
+        					<div class="col-md-2 item-quantity">
+	        					<span>
+	        						<span class="text desc info multiply">Qty:</span>
+	        						<span class="text">&nbsp; {{order.item.quantity}}</span>
+	        					</span>
+        					</div>
+	        				<div class="col-md-2 item-status item-capsule">
+	        					<p class="capsule">
+
+                                    {% if order.being_delivered == True %}
+                                        Delivered
+                                    {% else %}
+                                        Pending
+                                    {% endif %}
+                                    {% if order.received == True %}
+                                        Recieved                                     
+                                    {% endif %}
+                                </p>
+                                    
+	        				</div>
+	        				<div class="col-md-2 item-info">
+	        					<p class="text delivery-success">Delivered on {{order.ordered_date}}</p>
+	        				</div>
+        				<div class="clear"></div>
+        			</div>
+        			</div>
+        		</div>
+
+        		<hr>
+                {% endfor %}
+                {% else %}
+
+                <p>No order to show.</p>
+                {% endif %}
+                
+        	</div>
+        </div>
+    </div>
+</div>
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

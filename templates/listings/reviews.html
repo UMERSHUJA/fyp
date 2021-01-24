@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+
+{% block extra_style %}
+	
+
+<style type="text/css">
+
+
+	
+.order-item .item-pic img {
+    width: 80px;
+    height: 80px;
+}
+
+.order {
+    margin-top: 12px;
+    padding-bottom: 24px;
+    background-color: #fff;
+}
+
+img {
+    border-style: none;
+    /*vertical-align: middle;*/
+}
+
+.clear {
+    clear: both;
+}
+
+.order-item {
+    min-height: 80px;
+    margin: 24px 12px 24px 36px;
+    padding-right: 12px;
+    width: 916px;
+}
+
+.order-item .item-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.text.title {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.text {
+    color: #212121;
+    word-break: break-word;
+}
+.border{
+	border: 1px;
+}
+
+.button1{
+	background-color: white;
+	text-align: center;
+	color:black;
+	width: 65%;
+}
+
+.button1:hover{
+	background-color: #B6DFF3;
+}
+
+</style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+<div class="mt-4 border lzd-playground-right">
+        <div class="breadcrumb">
+            <a class="first " href="//my.daraz.pk/customer/order/index/">My Reviews</a>
+        </div>
+
+        <div id="container" class="container">
+        	<div>
+        	<div class="order-list">
+        		
+        		<div class="orders">
+        			<div class="order">
+        				<div class="order-info">
+        					<div class="float-left">
+        						<div class="info-order-left-text">Order 
+        							<a class="link"> #122620848361830</a>
+        						</div>
+        						<p class="text info desc">Placed on 03 Dec 2020  16:10:47</p>
+        					</div>
+        					<div class="pull-cont"></div>
+        					
+        					<div class="clear"></div>
+        				</div>
+        				
+ 						<hr>
+ 						       				
+        				<div class="order-item">
+        					<div class="row">
+        					<div class="col-md-1 item-pic" data-spm="detail_image">
+        						<a href="#">
+        							<img src="https://static-01.daraz.pk/p/8479cd9547d81d274b2f43feb6859940.jpg">
+        						</a>
+
+        					</div>
+        					<div style="border-right: 1px solid black;" class="col-md-7 item-main item-main-mini">
+        						
+	        						<div class="text title item-title" data-spm="details_title">&nbsp;Realme3 Four Corner Shocked Proof Best Quality TPU Cover</div>
+	        						<p class="text desc"></p>
+	        						<p class="text desc bold"></p>
+	        					
+        					</div>
+        					<div class="col-md-3 mt-3">
+	        					<button class="btn button1 btn-info">Review</button>
+	        				</div>
+        				<div class="clear"></div>
+        			</div>
+        			</div>
+        		</div>
+
+        		<hr>
+
+        	</div>
+        </div>
+    </div>
+</div>
+    </div>
+
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+{% block extra_title %}
+My returns{% endblock %}
+
+{% block extra_style %}
+	
+
+<style type="text/css">
+
+
+	
+.order-item .item-pic img {
+    width: 80px;
+    height: 80px;
+}
+
+.order {
+    margin-top: 12px;
+    padding-bottom: 24px;
+    background-color: #fff;
+}
+
+img {
+    border-style: none;
+    /*vertical-align: middle;*/
+}
+
+.clear {
+    clear: both;
+}
+
+.order-item {
+    min-height: 80px;
+    margin: 24px 12px 24px 36px;
+    padding-right: 12px;
+    width: 916px;
+}
+
+.order-item .item-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.text.title {
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.text {
+    color: #212121;
+    word-break: break-word;
+}
+.border{
+	border: 1px;
+}
+</style>
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+
+
+<div class="container">
+<div class="mt-4 border lzd-playground-right">
+        <div class="breadcrumb">
+            <a class="first " href="//my.daraz.pk/customer/order/index/">My Returns</a>
+        </div>
+
+        <div id="container" class="container">
+        	<div>
+        	<div class="order-list">
+            {% if refund %}
+            {% for ref in refund %}        		
+        		<div class="orders">
+        			<div class="order">
+        				<div class="order-info">
+        					<div class="float-left">
+        						<div class="info-order-left-text">Order 
+        							<a class="link"> #<b>{{ref.order.ref_code}}</b></a>
+        						</div>
+        						<p class="text info desc">Returned on {{ref.requested_date}}</p>
+        					</div>
+        					<div class="pull-cont"></div>
+        					
+        					<div class="clear"></div>
+        				</div>
+        				
+ 						<hr>
+ 						       				
+        				<div class="order-item">
+        					<div class="row">
+        					<div class="col-md-1 item-pic" data-spm="detail_image">
+        						<a href="#">
+        							<img src="{{ref.order.item.item.image.url}}">
+        						</a>
+
+        					</div>
+        					<div class="col-md-4 item-main item-main-mini">
+        						
+	        						<div class="text title item-title" data-spm="details_title">&nbsp;{{ref.order.item.item.title}}</div>
+	        						<p class="text desc"></p>
+	        						<p class="text desc bold"></p>
+	        					
+        					</div>
+        					<div class="col-md-2 item-quantity">
+	        					<span>
+	        						<span class="text desc info multiply">Qty:</span>
+	        						<span class="text">&nbsp;{{ref.order.item.quantity}}</span>
+	        					</span>
+        					</div>
+	        				<div class="col-md-4 item-status item-capsule">
+                                <p class="capsule">
+
+                                    {% if ref.accepted == True %}
+                                        Request Accepted
+                                    {% endif %}
+                                    {% if ref.accepted == False %}
+                                        Pending
+                                    {% endif %}
+                                    
+                                    <br>
+                                    
+                                    {% if ref.order.refund_granted == True %}
+                                        Refund Granted
+                                    {% endif %}
+                                </p>
+                                    
+                            </div>
+        				<div class="clear"></div>
+        			</div>
+        			</div>
+        		</div>
+
+        		<hr>
+
+        	</div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+    </div>
+
+
+
+</div>
+
+
+
+{% endblock %}
