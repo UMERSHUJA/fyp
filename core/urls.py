@@ -1,6 +1,11 @@
 from django.urls import path
 from .views import (
     HomeView,
+
+    AboutView,
+    ContactView,
+    TrackerView,
+    
     CategoryView,
     MyOrderView,
     WriteReviewsView,
@@ -20,7 +25,13 @@ from .views import (
 
 app_name = 'core'
 urlpatterns=[
-    path('', HomeView, name='item-list'),
+    path('', HomeView.as_view(), name='item-list'),
+    
+    path('about/', AboutView, name='AboutUs'),
+    path('contact/', ContactView, name='ContactUs'),
+    path('tracker/', TrackerView, name='TrackingStatus'),
+    
+
     path('my-orders/', MyOrderView, name='my-orders'),
     path('category/', CategoryView, name='category-view'),
     path('write-reviews/<ref_code>/', WriteReviewsView, name='write-reviews'),

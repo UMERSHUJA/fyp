@@ -1,7 +1,9 @@
+from django.http import HttpResponse
 import random
 import string
 import pandas as pd
 import datetime 
+import csv
 from django.http import JsonResponse
 import stripe
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
@@ -377,21 +379,24 @@ def CategoryView(request):
     return render(request, 'listings/product.html')
 
 
-def HomeView(request):
-    if request.method == "GET":
-        items = Item.objects.filter(is_published=True)
-        
-        paginator = Paginator(items, 20)
-        page = request.GET.get('page')
-        paged_items = paginator.get_page(page)
+def AboutView(request):
+    return HttpResponse("AboutUs")
 
-        context = {
-            'items': paged_items,
-            
-        }
-        return render(request, 'listings/index.html', context)
-    else:
-        return redirect('/')
+
+def TrackerView(request):
+    return HttpResponse("TrackUs")
+
+
+def ContactView(request):
+    return HttpResponse("Contact Us")
+
+
+
+class HomeView(ListView):
+    model = Item
+    paginate_by = 20
+    template_name = "listings/index.html"
+
 
 def MyOrderView(request):
     if request.method == "GET":
@@ -413,14 +418,37 @@ def WriteReviewsView(request, ref_code):
         return render(request, 'listings/write_reviews.html', context)
 
 
+# user_id = []
+# ratings = []        
+# product_id = []
+
+
 def SubmitReviews(request):
     if request.method == "POST":
         ref_code = request.POST['ref_code']
+        
         message = request.POST['comment']
         rating = request.POST['rating']
         comment = Comment(order=ref_code, message=message, rating=rating)
+        order = Order.objects.get(ref_code=ref_code, ordered="True")
         comment.save()
         messages.success(request, 'Your review has been submitted Successfully')
+              
+
+
+        # user_id.append(request.user.id)
+        # ratings.append(rating)
+        # product_id.append(order.item.item.id)
+        
+        # data = {'user_id': user_id, 'ratings': ratings, 'product_id': product_id}        
+        
+        
+        with open('data.csv', 'a', newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow([request.user.id, order.item.item.id, rating])
+            
+            f.close()
+
         return redirect('core:my-orders')
 
 

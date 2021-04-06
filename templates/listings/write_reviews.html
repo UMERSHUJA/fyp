@@ -166,7 +166,7 @@ img {
                                      <form action="{% url 'core:submit-reviews' %}" method="POST">
                                         {% csrf_token %}
 
-                                        <input type="hidden" name="ref_code" value="{{ref_code}}">
+                                        <input type="hidden" name="ref_code" value="{{ odr.ref_code }}">
 
                                     <label class="float-left" for="comment"><b>Comment here:</b></label>
                                         <textarea name="comment" class="form-control" rows="4"></textarea>
