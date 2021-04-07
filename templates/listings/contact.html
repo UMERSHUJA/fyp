@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% block extra_title %} Contact Us {% endblock %}
 {% block content %}
 	
 	<!-- banner-2 -->
@@ -40,8 +40,8 @@
 							<i class="fas fa-map-marker-alt rounded-circle"></i>
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Address</h4>
-						<p>1PO Box 8568954 Melbourne
-							<label>Australia.</label>
+						<p>1PO Box 54000
+							<label>Pakistan.</label>
 						</p>
 					</div>
 				</div>
@@ -51,8 +51,8 @@
 							<i class="fas fa-phone rounded-circle"></i>
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Call Us</h4>
-						<p>+(0121) 121 121
-							<label>+(0121) 121 122</label>
+						<p>+(0423) 121 121
+							<label>+(0423) 121 122</label>
 						</p>
 					</div>
 				</div>
@@ -63,16 +63,17 @@
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Email</h4>
 						<p>
-							<a href="mailto:info@example.com">info@example1.com</a>
+							<a href="mailto:info@example.com">umershuja12@gmail.com</a>
 							<label>
-								<a href="mailto:info@example.com">info@example2.com</a>
+								<a href="mailto:info@example.com">suirsan12@gmail.com</a>
 							</label>
 						</p>
 					</div>
 				</div>
 			</div>
 			<!-- form -->
-			<form action="#" method="post">
+			<form action="{% url 'core:SendMail' %}" method="POST">
+				{% csrf_token %}
 				<div class="contact-grids1 w3agile-6">
 					<div class="row">
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">

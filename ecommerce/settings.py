@@ -138,6 +138,14 @@ MEDIA_URL = '/media/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
+# Email config
+# mailtrap.io
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_PORT = '2525'
+EMAIL_HOST_USER = '74893578792920'
+EMAIL_HOST_PASSWORD = '4213807f717e6c'
+EMAIL_USE_TLS = True
 
 
 

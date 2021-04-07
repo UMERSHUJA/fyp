@@ -4,6 +4,7 @@ from .views import (
 
     AboutView,
     ContactView,
+    SendMailView,
     TrackerView,
     
     CategoryView,
@@ -29,6 +30,7 @@ urlpatterns=[
     
     path('about/', AboutView, name='AboutUs'),
     path('contact/', ContactView, name='ContactUs'),
+    path('sendmail/', SendMailView, name='SendMail'),
     path('tracker/', TrackerView, name='TrackingStatus'),
     
 

@@ -5,6 +5,8 @@ import pandas as pd
 import datetime 
 import csv
 from django.http import JsonResponse
+from django.core.mail import send_mail
+
 import stripe
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.conf import settings
@@ -387,9 +389,28 @@ def TrackerView(request):
     return HttpResponse("TrackUs")
 
 
-def ContactView(request):
-    return HttpResponse("Contact Us")
 
+
+
+def ContactView(request):
+    return render(request, 'listings/contact.html')
+
+
+def SendMailView(request):
+    if request.method == "POST":
+        name = request.POST['Name']
+        email = request.POST['Email']
+        message = request.POST['Message']
+
+        send_mail(
+            str(name) + 'Inquiry',
+            message,
+            email,
+            ['umershuja12@gmail.com', 'suirsan12@gmail.com'],
+            fail_silently=False
+        )
+        messages.success(request, 'Your request has been submitted, an inquiry master will get back to you soon')
+        return redirect('core:item-list')
 
 
 class HomeView(ListView):
