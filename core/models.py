@@ -8,12 +8,12 @@ from django_countries.fields import CountryField
 
 
 CATEGORY_CHOICES =(
-        ('M', 'Mobile'),
-        ('C', 'Computer'),
-        ('Tv', 'Television'),
-        ('A', 'Audio'),
-        ('LA', 'Large Appliances'),
-        ('C', 'Camera')
+        ('Mobile', 'Mobile'),
+        ('Computer', 'Computer'),
+        ('Television', 'Television'),
+        ('Audio', 'Audio'),
+        ('LargeAppliances', 'Large Appliances'),
+        ('Camera', 'Camera')
     )
 
 
@@ -46,7 +46,7 @@ class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
     discount_price = models.FloatField(default=0)
-    category = models.CharField(choices=CATEGORY_CHOICES, max_length=5)
+    category = models.CharField(choices=CATEGORY_CHOICES, max_length=15)
     label = models.CharField(choices=LABEL_CHOICES, max_length=1,blank=True, null=True)
     is_published = models.BooleanField(default=True)
     stock = models.IntegerField(default=100)

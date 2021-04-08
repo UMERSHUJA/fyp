@@ -5,7 +5,6 @@ from .views import (
     AboutView,
     ContactView,
     SendMailView,
-    TrackerView,
     
     CategoryView,
     MyOrderView,
@@ -31,11 +30,9 @@ urlpatterns=[
     path('about/', AboutView, name='AboutUs'),
     path('contact/', ContactView, name='ContactUs'),
     path('sendmail/', SendMailView, name='SendMail'),
-    path('tracker/', TrackerView, name='TrackingStatus'),
-    
 
     path('my-orders/', MyOrderView, name='my-orders'),
-    path('category/', CategoryView, name='category-view'),
+    path('category/<cat_name>', CategoryView, name='category-view'),
     path('write-reviews/<ref_code>/', WriteReviewsView, name='write-reviews'),
     path('submit-review/', SubmitReviews, name='submit-reviews'),
     path('my-returns/', MyReturnsView.as_view(), name='my-returns'),

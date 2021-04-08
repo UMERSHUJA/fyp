@@ -377,18 +377,20 @@ class PaymentView(View):
         return redirect("/payment/stripe/")
 
 
-def CategoryView(request):
-    return render(request, 'listings/product.html')
+def CategoryView(request, cat_name):
+    
+    items = Item.objects.all().filter(category=cat_name)
+    
+
+    context = {
+        'items': items,
+        'cat_name': cat_name
+    }
+    return render(request, 'listings/product.html', context)
 
 
 def AboutView(request):
-    return HttpResponse("AboutUs")
-
-
-def TrackerView(request):
-    return HttpResponse("TrackUs")
-
-
+    return render(request, 'listings/about.html')
 
 
 
