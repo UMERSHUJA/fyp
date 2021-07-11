@@ -35,7 +35,7 @@ def is_valid_form(values):
         if field == '':
             valid = False
     return valid
-
+ 
 
 class SearchView(View):
     def get(self, *args, **kwargs):
@@ -44,7 +44,7 @@ class SearchView(View):
         if 'product_name' in self.request.GET:
             keywords = self.request.GET['product_name']
             if keywords:
-                search_item = queryset_list.filter(description__icontains=keywords)
+                search_item = queryset_list.filter(title__icontains=keywords)
             
             context = {
                 'search_item': search_item,

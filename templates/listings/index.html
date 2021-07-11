@@ -107,7 +107,7 @@ Welcome to shop
 							
 							<div class="row">
 								{% for item in object_list %}
-									{% if item.stock > 0 %}
+									{% if item.stock > 0 and item.is_published == True %}
 								<div class="col-md-3 product-men mt-5">
 									<div class="men-pro-item simpleCart_shelfItem">
 										<div class="men-thumb-item text-center">
